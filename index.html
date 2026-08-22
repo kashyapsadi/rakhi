@@ -124,7 +124,7 @@
       cursor: pointer;
     }
 
-    /* Surround Gallery Track (Bigger with Smooth Hover Pop) */
+    /* Infinite Horizontal Loop Gallery Track */
     .gallery-track {
       display: flex;
       gap: 14px;
@@ -132,7 +132,6 @@
       overflow-y: hidden;
       padding: 18px 8px 24px;
       margin: 12px 0;
-      scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
     .gallery-track::-webkit-scrollbar {
@@ -172,6 +171,7 @@
       object-fit: contain;
       border-radius: 12px;
       background: #fafafa;
+      pointer-events: none;
     }
     .scroll-hint {
       font-size: 13px;
@@ -239,16 +239,13 @@
     </div>
   </div>
 
-  <!-- Screen 5: Gift 1 (Main GIF + Surrounding Memories Reel 1) -->
+  <!-- Screen 5: Gift 1 -->
   <div id="screen5" class="card hidden">
     <h2>Happy Raksha Bandhan! 🌸</h2>
-    
-    <!-- Main Center GIF/Animation -->
     <img src="https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif" class="main-gif" alt="Rakhi Celebration" />
 
-    <div class="scroll-hint">👈 Scroll Memories & Hover to Pop 👉</div>
-    <!-- Horizontal Surrounding Photos Reel (Order 1) -->
-    <div class="gallery-track">
+    <div class="scroll-hint">♾️ Endless Scroll & Hover to Pop ♾️</div>
+    <div class="gallery-track" id="track1">
       <div class="photo-thumb"><img src="0 (1).jpeg" alt="pic" loading="lazy" /></div>
       <div class="photo-thumb"><img src="0 (1).jpg" alt="pic" loading="lazy" /></div>
       <div class="photo-thumb"><img src="0 (2).jpg" alt="pic" loading="lazy" /></div>
@@ -283,16 +280,13 @@
     <button class="btn btn-back" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
   </div>
 
-  <!-- Screen 6: Gift 2 (Main GIF + Surrounding Memories Reel 2) -->
+  <!-- Screen 6: Gift 2 -->
   <div id="screen6" class="card hidden">
     <h2>Best Sister Award 🏆</h2>
-    
-    <!-- Main Center Trophy/Award Animation -->
     <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" class="main-gif" alt="Best Sister" />
 
-    <div class="scroll-hint">👈 Scroll Memories & Hover to Pop 👉</div>
-    <!-- Horizontal Surrounding Photos Reel (Order 2 - Recent First) -->
-    <div class="gallery-track">
+    <div class="scroll-hint">♾️ Endless Scroll & Hover to Pop ♾️</div>
+    <div class="gallery-track" id="track2">
       <div class="photo-thumb"><img src="0 (27).jpg" alt="pic" loading="lazy" /></div>
       <div class="photo-thumb"><img src="0 (22).jpg" alt="pic" loading="lazy" /></div>
       <div class="photo-thumb"><img src="0 (23).jpg" alt="pic" loading="lazy" /></div>
@@ -327,16 +321,13 @@
     <button class="btn btn-back" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
   </div>
 
-  <!-- Screen 7: Gift 3 (Main GIF + Surrounding Memories Reel 3) -->
+  <!-- Screen 7: Gift 3 -->
   <div id="screen7" class="card hidden">
     <h2>Forever Best Friend 💌</h2>
-    
-    <!-- Main Center Love/Memories GIF -->
     <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" class="main-gif" alt="Forever Best Friend" />
 
-    <div class="scroll-hint">👈 Scroll Memories & Hover to Pop 👉</div>
-    <!-- Horizontal Surrounding Photos Reel (Order 3 - Reverse) -->
-    <div class="gallery-track">
+    <div class="scroll-hint">♾️ Endless Scroll & Hover to Pop ♾️</div>
+    <div class="gallery-track" id="track3">
       <div class="photo-thumb"><img src="0 (27).jpg" alt="pic" loading="lazy" /></div>
       <div class="photo-thumb"><img src="0 (26).jpg" alt="pic" loading="lazy" /></div>
       <div class="photo-thumb"><img src="0 (25).jpg" alt="pic" loading="lazy" /></div>
@@ -380,6 +371,24 @@
       }
       window.scrollTo(0, 0);
     }
+
+    // Infinite Seamless Loop Logic
+    document.querySelectorAll('.gallery-track').forEach(track => {
+      // Clone all photos inside the track to create a continuous buffer
+      const items = Array.from(track.children);
+      items.forEach(item => {
+        track.appendChild(item.cloneNode(true));
+      });
+
+      track.addEventListener('scroll', () => {
+        const halfWidth = track.scrollWidth / 2;
+        if (track.scrollLeft >= halfWidth) {
+          track.scrollLeft -= halfWidth;
+        } else if (track.scrollLeft <= 0) {
+          track.scrollLeft += halfWidth;
+        }
+      });
+    });
   </script>
 </body>
 </html>
