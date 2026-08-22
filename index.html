@@ -11,103 +11,177 @@
       padding: 0;
     }
     body {
-      font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
-      background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+      font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', -apple-system, sans-serif;
+      background: #ffe6eb;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      padding: 25px 15px;
     }
     .card {
       background: #ffffff;
       border: 4px solid #ff4d6d;
-      border-radius: 25px;
-      padding: 25px;
+      border-radius: 32px;
+      padding: 30px 24px;
       text-align: center;
-      box-shadow: 0 12px 28px rgba(255, 77, 109, 0.25);
+      box-shadow: 0 18px 40px rgba(255, 77, 109, 0.25);
       width: 100%;
-      max-width: 380px;
-      transition: all 0.3s ease;
+      max-width: 580px;
+      margin: auto;
+      animation: popIn 0.3s ease;
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
     }
     h2 {
-      color: #c9184a;
-      font-size: 22px;
-      margin-bottom: 12px;
+      color: #d81159;
+      font-size: 26px;
+      margin-bottom: 15px;
+      font-weight: bold;
     }
     p {
-      color: #595959;
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 15px;
+      color: #555555;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
-    .media-box {
+    .main-gif {
       width: 100%;
-      max-height: 200px;
-      margin-bottom: 15px;
-      border-radius: 15px;
+      height: 260px;
+      border-radius: 20px;
       object-fit: cover;
+      margin-bottom: 16px;
+      display: block;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.06);
     }
     .btn-container {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 15px;
     }
     .btn {
-      padding: 12px 24px;
+      padding: 12px 28px;
       border: none;
       border-radius: 50px;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.15s ease, background-color 0.2s ease;
     }
     .btn:active {
       transform: scale(0.95);
     }
     .btn-pink {
       background: #ff4d6d;
-      color: white;
+      color: #ffffff;
     }
     .btn-gray {
-      background: #e0e0e0;
-      color: #444;
+      background: #e2e8f0;
+      color: #334155;
     }
+    .btn-back {
+      background: #e2e8f0;
+      color: #334155;
+      font-size: 14px;
+      padding: 10px 24px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* Gift Hub Grid */
     .gift-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 15px 0;
+      gap: 15px;
+      margin: 22px 0;
     }
-    .gift-btn {
+    .gift-box {
       background: #fff0f3;
       border: 2px dashed #ff4d6d;
-      border-radius: 15px;
-      padding: 15px 5px;
-      font-size: 28px;
+      border-radius: 20px;
+      padding: 20px 8px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
+      transition: transform 0.2s;
     }
-    .gift-label {
-      font-size: 12px;
+    .gift-box:hover {
+      transform: scale(1.06);
+      background: #ffe3e8;
+    }
+    .gift-box span {
+      font-size: 38px;
+    }
+    .gift-box label {
+      font-size: 14px;
       font-weight: bold;
-      color: #c9184a;
+      color: #d81159;
+      cursor: pointer;
     }
-    .award-badge {
-      background: #fff3cd;
-      border: 2px solid #ffeeba;
+
+    /* Surround Gallery Track (Bigger with Smooth Hover Pop) */
+    .gallery-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 18px 8px 24px;
+      margin: 12px 0;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .gallery-track::-webkit-scrollbar {
+      height: 7px;
+    }
+    .gallery-track::-webkit-scrollbar-thumb {
+      background: #ff4d6d;
+      border-radius: 10px;
+    }
+    .gallery-track::-webkit-scrollbar-track {
+      background: #ffe5ec;
+      border-radius: 10px;
+    }
+    .photo-thumb {
+      flex: 0 0 160px;
+      height: 200px;
+      background: #ffffff;
+      border: 3px solid #ffccd5;
+      border-radius: 18px;
+      padding: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .photo-thumb:hover {
+      transform: scale(1.2) translateY(-8px);
+      box-shadow: 0 16px 30px rgba(255, 77, 109, 0.4);
+      border-color: #ff4d6d;
+      z-index: 20;
+    }
+    .photo-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       border-radius: 12px;
-      padding: 15px;
-      margin: 10px 0;
-      color: #856404;
+      background: #fafafa;
     }
+    .scroll-hint {
+      font-size: 13px;
+      color: #ff4d6d;
+      font-weight: bold;
+      margin: 6px 0;
+    }
+
     .hidden {
-      display: none;
+      display: none !important;
     }
   </style>
 </head>
@@ -116,7 +190,7 @@
   <!-- Screen 1: Intro -->
   <div id="screen1" class="card">
     <h2>I have made something for you! 🎁</h2>
-    <img src="https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif" class="media-box" alt="Cute Baby" />
+    <img src="https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif" class="main-gif" alt="Intro" />
     <p>Do you wanna see it?</p>
     <div class="btn-container">
       <button class="btn btn-pink" onclick="showScreen('screen3')">YES 💖</button>
@@ -124,77 +198,186 @@
     </div>
   </div>
 
-  <!-- Screen 2: How Dare You (Angry) -->
+  <!-- Screen 2: How Dare You -->
   <div id="screen2" class="card hidden">
     <h2>HOW DARE YOU!? 😡</h2>
-    <img src="https://media.giphy.com/media/11tTNkNy1SdXGg/giphy.gif" class="media-box" alt="Angry Baby" />
+    <img src="https://media.giphy.com/media/11tTNkNy1SdXGg/giphy.gif" class="main-gif" alt="Angry" />
     <p>You don't have a choice anyway. Try again!</p>
     <div class="btn-container">
       <button class="btn btn-pink" onclick="showScreen('screen1')">TRY AGAIN 😤</button>
     </div>
   </div>
 
-  <!-- Screen 3: Excited Confirmation -->
+  <!-- Screen 3: Excited -->
   <div id="screen3" class="card hidden">
     <h2>Are you really excited? 🥳</h2>
-    <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" class="media-box" alt="Excited Baby" />
+    <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" class="main-gif" alt="Excited" />
+    <p>Choose your answer:</p>
     <div class="btn-container">
       <button class="btn btn-pink" onclick="showScreen('screen4')">YES! ✨</button>
       <button class="btn btn-pink" onclick="showScreen('screen4')">YESSS! 😍</button>
     </div>
   </div>
 
-  <!-- Screen 4: Gift Hub (3 Boxes) -->
+  <!-- Screen 4: Gift Hub -->
   <div id="screen4" class="card hidden">
     <h2>Each gift has something for you! 🎀</h2>
-    <p>Click on any gift to open:</p>
+    <p>Tap on any gift:</p>
     <div class="gift-grid">
-      <div class="gift-btn" onclick="showScreen('screen5')">
-        🎁
-        <span class="gift-label">Gift 1</span>
+      <div class="gift-box" onclick="showScreen('screen5')">
+        <span>🎁</span>
+        <label>Gift 1</label>
       </div>
-      <div class="gift-btn" onclick="showScreen('screen6')">
-        🎁
-        <span class="gift-label">Gift 2</span>
+      <div class="gift-box" onclick="showScreen('screen6')">
+        <span>🎁</span>
+        <label>Gift 2</label>
       </div>
-      <div class="gift-btn" onclick="showScreen('screen7')">
-        🎁
-        <span class="gift-label">Gift 3</span>
+      <div class="gift-box" onclick="showScreen('screen7')">
+        <span>🎁</span>
+        <label>Gift 3</label>
       </div>
     </div>
   </div>
 
-  <!-- Screen 5: Rakhi Card -->
+  <!-- Screen 5: Gift 1 (Main GIF + Surrounding Memories Reel 1) -->
   <div id="screen5" class="card hidden">
     <h2>Happy Raksha Bandhan! 🌸</h2>
-    <img src="https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif" class="media-box" alt="Celebration" />
-    <p>To more laughs, dumb fights, inside jokes, and all the sibling chaos! You are the best!</p>
-    <button class="btn btn-gray" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
-  </div>
+    
+    <!-- Main Center GIF/Animation -->
+    <img src="https://media.giphy.com/media/3oz8xAFtqoOUUrsh7W/giphy.gif" class="main-gif" alt="Rakhi Celebration" />
 
-  <!-- Screen 6: Best Sister Award -->
-  <div id="screen6" class="card hidden">
-    <h2>🏆 Official Award 🏆</h2>
-    <div class="award-badge">
-      <h3 style="margin-bottom: 5px;">Best Sister Award</h3>
-      <p style="font-size: 13px; margin: 0;">Presented for: Being my 24x7 entertainer, free therapist, and permanent headache.</p>
+    <div class="scroll-hint">👈 Scroll Memories & Hover to Pop 👉</div>
+    <!-- Horizontal Surrounding Photos Reel (Order 1) -->
+    <div class="gallery-track">
+      <div class="photo-thumb"><img src="0 (1).jpeg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (1).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (2).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (3).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (4).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (5).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (6).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (7).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (8).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (9).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (10).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (11).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (12).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (13).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (14).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (15).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (16).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (17).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (18).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (19).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (20).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (21).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (22).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (23).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (24).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (25).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (26).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (27).jpg" alt="pic" loading="lazy" /></div>
     </div>
-    <p>You truly deserve the trophy today!</p>
-    <button class="btn btn-gray" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
+
+    <p>To more laughs, dumb fights, inside jokes, and all the sibling chaos! You are the best!</p>
+    <button class="btn btn-back" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
   </div>
 
-  <!-- Screen 7: Sweet Message / Memories -->
+  <!-- Screen 6: Gift 2 (Main GIF + Surrounding Memories Reel 2) -->
+  <div id="screen6" class="card hidden">
+    <h2>Best Sister Award 🏆</h2>
+    
+    <!-- Main Center Trophy/Award Animation -->
+    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" class="main-gif" alt="Best Sister" />
+
+    <div class="scroll-hint">👈 Scroll Memories & Hover to Pop 👉</div>
+    <!-- Horizontal Surrounding Photos Reel (Order 2 - Recent First) -->
+    <div class="gallery-track">
+      <div class="photo-thumb"><img src="0 (27).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (22).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (23).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (24).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (25).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (11).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (12).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (1).jpeg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (2).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (3).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (18).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (1).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (4).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (5).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (6).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (7).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (8).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (9).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (10).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (13).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (14).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (15).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (16).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (17).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (19).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (20).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (21).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (26).jpg" alt="pic" loading="lazy" /></div>
+    </div>
+
+    <p>Certified 24/7 Entertainer, Food Stealer, and Personal Headache! Love you! ❤️</p>
+    <button class="btn btn-back" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
+  </div>
+
+  <!-- Screen 7: Gift 3 (Main GIF + Surrounding Memories Reel 3) -->
   <div id="screen7" class="card hidden">
     <h2>Forever Best Friend 💌</h2>
-    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" class="media-box" alt="Love" />
-    <p>Thanks for always backing me up, hiding my secrets, and dealing with all my rants. Love you loads!</p>
-    <button class="btn btn-gray" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
+    
+    <!-- Main Center Love/Memories GIF -->
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" class="main-gif" alt="Forever Best Friend" />
+
+    <div class="scroll-hint">👈 Scroll Memories & Hover to Pop 👉</div>
+    <!-- Horizontal Surrounding Photos Reel (Order 3 - Reverse) -->
+    <div class="gallery-track">
+      <div class="photo-thumb"><img src="0 (27).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (26).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (25).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (24).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (23).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (22).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (21).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (20).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (19).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (18).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (17).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (16).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (15).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (14).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (13).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (12).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (11).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (10).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (9).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (8).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (7).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (6).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (5).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (4).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (3).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (2).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (1).jpg" alt="pic" loading="lazy" /></div>
+      <div class="photo-thumb"><img src="0 (1).jpeg" alt="pic" loading="lazy" /></div>
+    </div>
+
+    <p>Thanks for always backing me up and dealing with all my rants! ✨</p>
+    <button class="btn btn-back" onclick="showScreen('screen4')">⬅ Back to Gifts</button>
   </div>
 
   <script>
     function showScreen(screenId) {
-      document.querySelectorAll('.card').forEach(card => card.classList.add('hidden'));
-      document.getElementById(screenId).classList.remove('hidden');
+      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+      const activeCard = document.getElementById(screenId);
+      if (activeCard) {
+        activeCard.classList.remove('hidden');
+      }
       window.scrollTo(0, 0);
     }
   </script>
